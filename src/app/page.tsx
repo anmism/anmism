@@ -179,7 +179,7 @@ export default function Home() {
           <div className="relative w-44 h-44 mb-6">
             <div className="absolute inset-0 bg-[#FBDAB3] rounded-full" />
             <Image
-              src="/anmims.png"
+              src="/bapun.png"
               alt="Anmism"
               width={176}
               height={176}
