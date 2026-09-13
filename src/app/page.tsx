@@ -41,6 +41,13 @@ const projects: Project[] = [
     url: "https://tracvid.anmism.com",
   },
   {
+    name: "Sketchmark",
+    tagline: "Motion Graphics with JavaScript",
+    description: "A pure 2D render kernel for animated visuals. Motion graphics tool for your AI agent.",
+    logo: "/sketchmark.png",
+    url: "https://sketchmark.dev",
+  },
+  {
     name: "Twosemi",
     tagline: "Productivity Suite",
     description: "The only productivity tool you need. Tasks, notes, and workflows in one place.",
