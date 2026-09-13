@@ -247,7 +247,7 @@ export default function Home() {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-6 mt-auto pt-8">
+          <div className="flex items-center gap-6 pt-6">
             <a href="https://x.com/bapunhansdah7" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-700 transition-colors">
               <XLogo size={24} weight="fill" />
             </a>
