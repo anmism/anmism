@@ -7,6 +7,8 @@ import {
   Code,
   Book,
   Bookmarks,
+  Envelope,
+  Phone,
   XLogo,
   YoutubeLogo,
   LinkedinLogo,
@@ -213,30 +215,28 @@ export default function Home() {
           </p>
 
           {/* Links */}
-          <div className="flex flex-col gap-2 mb-4">
+          {/* <div className="flex flex-col gap-2 mb-4">
             <a href="#" className="text-gray-700 hover:underline flex items-center gap-2">
               <Book size={18} weight="fill" /> My blog
             </a>
             <a href="#" className="text-gray-700 hover:underline flex items-center gap-2">
               <Bookmarks size={18} weight="fill" /> Bookmarks
             </a>
-          </div>
+          </div> */}
 
           {/* Bio */}
-          <p className="text-gray-600 mb-2">
+          <p className="text-gray-600 mb-4">
             Got an idea? Let&apos;s make it real.
           </p>
 
           {/* Contact */}
-          <div className="flex mb-6">
-            <input
-              type="email"
-              placeholder="Your email..."
-              className="flex-1 px-4 py-3 rounded-l-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#FBDAB3]"
-            />
-            <button className="px-6 py-3 bg-[#FBDAB3] text-gray-700 font-medium rounded-r-lg hover:bg-[#f5c994] transition-colors">
-              Let&apos;s Talk
-            </button>
+          <div className="flex flex-col gap-2 mb-6">
+            <a href="mailto:bapunhansdah777@gmail.com" className="text-gray-700 hover:underline text-sm flex items-center gap-2">
+              <Envelope size={16} weight="fill" /> bapunhansdah777@gmail.com
+            </a>
+            <a href="tel:+918328821185" className="text-gray-700 hover:underline text-sm flex items-center gap-2">
+              <Phone size={16} weight="fill" /> +91 8328821185
+            </a>
           </div>
 
           {/* Social Links */}
