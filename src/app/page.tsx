@@ -34,11 +34,11 @@ const projects: Project[] = [
     url: "https://excalimotion.com",
   },
   {
-    name: "TracVid",
-    tagline: "Video Reframing Tool",
-    description: "Reframe videos for different aspect ratios. Perfect for repurposing content across platforms.",
-    logo: "/tracvid.png",
-    url: "https://tracvid.anmism.com",
+    name: "Tasvera",
+    tagline: "Create Reels from Videos",
+    description: "Convert long videos into short, engaging reels for social media.",
+    logo: "/tasvera.png",
+    url: "https://tasvera.anmism.com",
   },
   {
     name: "Sketchmark",
