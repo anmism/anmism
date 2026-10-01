@@ -54,6 +54,14 @@ const projects: Project[] = [
     logo: "/twosemi.png",
     url: "https://twosemi.anmism.com",
   },
+  // public\cliplocal.png
+  {
+    name: "Cliplocal",
+    tagline: "YT-DLP Browser Extension",
+    description: "Backend-less YouTube downloader that runs entirely in your browser",
+    logo: "/cliplocal.png",
+    url: "https://cliplocal.anmism.com",
+  },
   {
     name: "PptxGenJS",
     tagline: "Open Source Contributor",
