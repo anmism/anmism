@@ -27,6 +27,13 @@ type Project = {
 
 const projects: Project[] = [
   {
+    name: "Screenzo",
+    tagline: "Screen Recording with intent",
+    description: "Record the real work, guide attention with smooth cursor motion and overlays, export a polished demo people can follow.",
+    logo: "/screenzo.png",
+    url: "https://screenzo.anmism.com",
+  },
+  {
     name: "Excalimotion",
     tagline: "Excalidraw Animation Tool",
     description: "Bring your Excalidraw sketches to life with smooth, exportable animations.",
