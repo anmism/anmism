@@ -3,10 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import {
-  MapPin,
-  Code,
-  Book,
-  Bookmarks,
+  ArrowUpRight,
   Envelope,
   Phone,
   XLogo,
@@ -28,254 +25,288 @@ type Project = {
 const projects: Project[] = [
   {
     name: "Screenzo",
-    tagline: "Screen Recording with intent",
-    description: "Record the real work, guide attention with smooth cursor motion and overlays, export a polished demo people can follow.",
+    tagline: "Screen recording with intent",
+    description:
+      "Record the real work, guide attention with smooth cursor motion and overlays, export a polished demo people can follow.",
     logo: "/screenzo.png",
     url: "https://screenzo.anmism.com",
   },
   {
     name: "Excalimotion",
-    tagline: "Excalidraw Animation Tool",
+    tagline: "Excalidraw animation tool",
     description: "Bring your Excalidraw sketches to life with smooth, exportable animations.",
     logo: "/exclimotion.png",
     url: "https://excalimotion.com",
   },
   {
     name: "Tasvera",
-    tagline: "Create Reels from Videos",
+    tagline: "Create reels from videos",
     description: "Convert long videos into short, engaging reels for social media.",
     logo: "/tasvera.png",
     url: "https://tasvera.anmism.com",
   },
   {
     name: "Sketchmark",
-    tagline: "Motion Graphics with JavaScript",
-    description: "A pure 2D render kernel for animated visuals. Motion graphics tool for your AI agent.",
+    tagline: "Motion graphics with JavaScript",
+    description:
+      "A pure 2D render kernel for animated visuals. Motion graphics tool for your AI agent.",
     logo: "/sketchmark.png",
     url: "https://sketchmark.dev",
   },
   {
     name: "Twosemi",
-    tagline: "Productivity Suite",
+    tagline: "Productivity suite",
     description: "The only productivity tool you need. Tasks, notes, and workflows in one place.",
     logo: "/twosemi.png",
     url: "https://twosemi.anmism.com",
   },
-  // public\cliplocal.png
   {
     name: "Cliplocal",
-    tagline: "YT-DLP Browser Extension",
-    description: "Backend-less YouTube downloader that runs entirely in your browser",
+    tagline: "yt-dlp browser extension",
+    description: "Backend-less YouTube downloader that runs entirely in your browser.",
     logo: "/cliplocal.png",
     url: "https://cliplocal.anmism.com",
   },
   {
     name: "PptxGenJS",
-    tagline: "Open Source Contributor",
+    tagline: "Open source contribution",
     description: "Added animation support to the popular PowerPoint generation library.",
     logo: "/pptxgenjs.png",
     url: "https://pptxgenjs-animation.vercel.app/",
   },
   {
     name: "Hashtag Scraper",
-    tagline: "Chrome Extension",
-    description: "Scrape and analyze hashtags from social platforms. Available on Chrome Web Store.",
+    tagline: "Chrome extension",
+    description: "Scrape and analyze hashtags from social platforms. Available on the Chrome Web Store.",
     logo: "/hashtagscraper.png",
     url: "https://chromewebstore.google.com/detail/hashtag-scraper/lkjglfpchhgefmooomhbdipbppabdpii",
-  }
+  },
 ];
 
 const experience: Project[] = [
   {
     name: "Agma360",
-    tagline: "B2B Agentic AI SaaS",
-    description: "Fully autonomous AI marketer that runs campaigns end-to-end without human intervention.",
+    tagline: "B2B agentic AI SaaS",
+    description:
+      "Fully autonomous AI marketer that runs campaigns end-to-end without human intervention.",
     logo: "/agma360.png",
     url: "https://agma360.com",
-    date: "Apr 2025 - Present",
+    date: "Apr 2025 – Present",
   },
   {
     name: "Shotzspot",
-    tagline: "Influencer Marketing",
-    description: "Platform connecting brands with influencers to run impactful marketing campaigns.",
+    tagline: "Influencer marketing",
+    description:
+      "Platform connecting brands with influencers to run impactful marketing campaigns.",
     logo: "/shotzspot.png",
     url: "https://shotzspot.com",
-    date: "Mar 2025 - Jan 2026",
+    date: "Mar 2025 – Jan 2026",
   },
   {
     name: "Unifill AI",
-    tagline: "AI Automation Agency",
-    description: "Helping businesses automate workflows and scale with custom AI solutions. $25k+ revenue.",
+    tagline: "AI automation agency",
+    description:
+      "Helping businesses automate workflows and scale with custom AI solutions. $25k+ revenue.",
     logo: "/unifillai.png",
     url: "https://unifillai.com",
-    date: "Sep 2023 - Mar 2025",
+    date: "Sep 2023 – Mar 2025",
   },
   {
     name: "Dogswag",
-    tagline: "Dog Juice Platform",
+    tagline: "Dog juice platform",
     description: "E-commerce platform for healthy dog beverages and treats.",
     logo: "/dogswag.jpg",
     url: "https://barkybrews.com",
-    date: "Feb 2023 - Sep 2023",
+    date: "Feb 2023 – Sep 2023",
   },
 ];
 
-function TabsSection() {
-  const [activeTab, setActiveTab] = useState<"projects" | "experience">("projects");
+const socials = [
+  { label: "X", href: "https://x.com/bapunhansdah7", Icon: XLogo },
+  { label: "YouTube", href: "https://www.youtube.com/@anmism", Icon: YoutubeLogo },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/bapun-hansdah/", Icon: LinkedinLogo },
+  { label: "Instagram", href: "https://www.instagram.com/heyanmism/", Icon: InstagramLogo },
+  { label: "GitHub", href: "https://github.com/BapunHansdah", Icon: GithubLogo },
+];
 
+type Tab = "projects" | "experience";
+
+const tabs: { id: Tab; label: string; count: number }[] = [
+  { id: "projects", label: "Projects", count: projects.length },
+  { id: "experience", label: "Experience", count: experience.length },
+];
+
+function Row({ item }: { item: Project }) {
+  return (
+    <li>
+      <a
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group -mx-3 flex gap-4 rounded-2xl px-3 py-4 transition-colors duration-200 hover:bg-hover"
+      >
+        <Image
+          src={item.logo}
+          alt=""
+          width={44}
+          height={44}
+          className="size-11 shrink-0 rounded-xl object-cover ring-1 ring-black/5"
+        />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-4">
+            <h3 className="flex items-center gap-1.5 text-[17px] font-semibold leading-snug tracking-[-0.01em] text-ink">
+              {item.name}
+              <ArrowUpRight
+                size={14}
+                weight="bold"
+                aria-hidden
+                className="text-muted opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100"
+              />
+            </h3>
+            {item.date && (
+              <span className="shrink-0 text-[13px] tabular-nums text-muted">{item.date}</span>
+            )}
+          </div>
+          <p className="text-sm text-muted">{item.tagline}</p>
+          <p className="mt-2 max-w-[60ch] text-[15px] leading-relaxed text-ink-soft">
+            {item.description}
+          </p>
+        </div>
+      </a>
+    </li>
+  );
+}
+
+function TabsSection() {
+  const [activeTab, setActiveTab] = useState<Tab>("projects");
   const items = activeTab === "projects" ? projects : experience;
 
   return (
-    <div>
-      {/* Tab Buttons */}
-      <div className="flex gap-4 mb-6">
-        <button
-          onClick={() => setActiveTab("projects")}
-          className={`px-4 py-2 rounded-lg font-medium cursor-pointer transition-colors ${
-            activeTab === "projects"
-              ? "bg-[#FBDAB3] text-gray-700"
-              : "text-gray-500 hover:text-gray-700"
+    <section aria-label="Work">
+      <div
+        role="tablist"
+        aria-label="Work"
+        className="relative mb-6 grid w-fit grid-cols-2 rounded-full bg-hover p-1"
+      >
+        <span
+          aria-hidden
+          className={`absolute inset-y-1 left-1 w-[calc(50%-4px)] rounded-full bg-white shadow-[0_1px_2px_rgba(24,24,27,0.08),0_0_0_1px_rgba(24,24,27,0.04)] transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+            activeTab === "experience" ? "translate-x-full" : "translate-x-0"
           }`}
-        >
-          Projects
-        </button>
-        <button
-          onClick={() => setActiveTab("experience")}
-          className={`px-4 py-2 rounded-lg font-medium cursor-pointer transition-colors ${
-            activeTab === "experience"
-              ? "bg-[#FBDAB3] text-gray-700"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-        >
-          Experience
-        </button>
+        />
+        {tabs.map((tab) => {
+          const selected = activeTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              id={`tab-${tab.id}`}
+              role="tab"
+              type="button"
+              aria-selected={selected}
+              aria-controls="work-panel"
+              onClick={() => setActiveTab(tab.id)}
+              className={`relative z-10 flex cursor-pointer items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                selected ? "text-ink" : "text-muted hover:text-ink"
+              }`}
+            >
+              {tab.label}
+              <span
+                className={`rounded-full px-1.5 text-[11px] leading-[18px] tabular-nums transition-colors ${
+                  selected ? "bg-sun text-ink" : "bg-line text-muted"
+                }`}
+              >
+                {tab.count}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Cards Grid */}
-      <div className="grid sm:grid-cols-2 gap-4">
+      <ul
+        id="work-panel"
+        role="tabpanel"
+        aria-labelledby={`tab-${activeTab}`}
+        className="flex flex-col gap-1"
+      >
         {items.map((item) => (
-          <a
-            key={item.name}
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all"
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <Image
-                src={item.logo}
-                alt={item.name}
-                width={40}
-                height={40}
-                className="rounded-lg"
-              />
-              <div>
-                <h3 className="font-semibold text-gray-700">{item.name}</h3>
-                {"date" in item && (
-                  <p className="text-gray-400 text-xs">{item.date}</p>
-                )}
-              </div>
-            </div>
-            <p className="text-gray-500 text-sm mb-2">{item.tagline}</p>
-            <p className="text-gray-600 text-sm">{item.description}</p>
-          </a>
+          <Row key={item.name} item={item} />
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f5f5f4] p-6 md:p-12">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-[350px_1fr] gap-12">
-        {/* Left Column - Profile */}
-        <div className="flex flex-col">
-          {/* Profile Image */}
-          <div className="relative w-44 h-44 mb-6">
-            <div className="absolute inset-0 bg-[#FBDAB3] rounded-full" />
-            <Image
-              src="/bapun.png"
-              alt="Anmism"
-              width={176}
-              height={176}
-              className="relative rounded-full object-cover"
-              priority
-            />
-          </div>
+    <main className="relative isolate min-h-screen overflow-x-clip px-6 py-12 md:px-10 md:py-20">
+      <div aria-hidden className="dot-grid dot-grid--tl -z-10" />
+      <div aria-hidden className="dot-grid dot-grid--br -z-10" />
+      <div className="mx-auto grid max-w-5xl gap-14 md:grid-cols-[300px_1fr] lg:gap-24">
+        {/* Profile */}
+        <aside className="flex flex-col md:sticky md:top-20 md:self-start">
+          <Image
+            src="/bapun.png"
+            alt="Portrait of Bapun Hansdah"
+            width={112}
+            height={112}
+            className="mb-8 size-28 rounded-[28px] object-cover"
+            priority
+          />
 
-          {/* Name */}
-          <div className="mb-3">
-            <p className="text-gray-500">@anmism</p>
-            <h1 className="text-4xl font-bold text-gray-700">Bapun Hansdah</h1>
-          </div>
+          <p className="mb-1 text-sm text-muted">@anmism</p>
+          <h1 className="text-[2.75rem] font-semibold leading-[0.95] tracking-[-0.035em] text-ink">
+            Bapun
+            <br />
+            Hansdah
+          </h1>
 
-          {/* Location & Info */}
-          <div className="flex items-center gap-4 text-gray-600 text-sm mb-6">
-            <span className="flex items-center gap-1">
-              <MapPin size={16} weight="fill" /> India
-            </span>
-            <span className="flex items-center gap-1">
-              <Code size={16} weight="bold" /> Shipping since &apos;21
-            </span>
-          </div>
-
-          {/* Tagline */}
-          <p className="text-xl font-semibold text-gray-700 mb-1">
-            I take ideas from 0→1
+          <p className="mt-6 text-xl font-medium leading-snug tracking-[-0.01em] text-ink">
+            I take ideas from 0→1.
           </p>
-          <p className="text-sm text-gray-500 mb-4">
-            Cofounder & CTO · $25k+ revenue startup
+          <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+            Cofounder &amp; CTO of a startup with $25k+ in revenue. Based in India, shipping
+            since 2021. Got an idea? Let&apos;s make it real.
           </p>
 
-          {/* Links */}
-          {/* <div className="flex flex-col gap-2 mb-4">
-            <a href="#" className="text-gray-700 hover:underline flex items-center gap-2">
-              <Book size={18} weight="fill" /> My blog
+          <div className="mt-8 flex flex-col gap-2.5 text-[15px]">
+            <a
+              href="mailto:bapunhansdah777@gmail.com"
+              className="group flex w-fit items-center gap-2.5 text-ink"
+            >
+              <Envelope size={16} weight="regular" className="text-muted" aria-hidden />
+              <span className="underline decoration-line decoration-1 underline-offset-4 transition-colors group-hover:decoration-ink">
+                bapunhansdah777@gmail.com
+              </span>
             </a>
-            <a href="#" className="text-gray-700 hover:underline flex items-center gap-2">
-              <Bookmarks size={18} weight="fill" /> Bookmarks
-            </a>
-          </div> */}
-
-          {/* Bio */}
-          <p className="text-gray-600 mb-4">
-            Got an idea? Let&apos;s make it real.
-          </p>
-
-          {/* Contact */}
-          <div className="flex flex-col gap-2 mb-6">
-            <a href="mailto:bapunhansdah777@gmail.com" className="text-gray-700 hover:underline text-sm flex items-center gap-2">
-              <Envelope size={16} weight="fill" /> bapunhansdah777@gmail.com
-            </a>
-            <a href="tel:+918328821185" className="text-gray-700 hover:underline text-sm flex items-center gap-2">
-              <Phone size={16} weight="fill" /> +91 8328821185
+            <a href="tel:+918328821185" className="group flex w-fit items-center gap-2.5 text-ink">
+              <Phone size={16} weight="regular" className="text-muted" aria-hidden />
+              <span className="underline decoration-line decoration-1 underline-offset-4 transition-colors group-hover:decoration-ink">
+                +91 83288 21185
+              </span>
             </a>
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-6 pt-6">
-            <a href="https://x.com/bapunhansdah7" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-700 transition-colors">
-              <XLogo size={24} weight="fill" />
-            </a>
-            <a href="https://www.youtube.com/@anmism" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-700 transition-colors">
-              <YoutubeLogo size={24} weight="fill" />
-            </a>
-            <a href="https://www.linkedin.com/in/bapun-hansdah/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-700 transition-colors">
-              <LinkedinLogo size={24} weight="fill" />
-            </a>
-            <a href="https://www.instagram.com/heyanmism/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-700 transition-colors">
-              <InstagramLogo size={24} weight="fill" />
-            </a>
-            <a href="https://github.com/BapunHansdah" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-700 transition-colors">
-              <GithubLogo size={24} weight="fill" />
-            </a>
-          </div>
-        </div>
+          <ul className="-ml-2 mt-6 flex items-center gap-1">
+            {socials.map(({ label, href, Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="flex size-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-hover hover:text-ink"
+                >
+                  <Icon size={20} weight="fill" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
 
-{/* Right Column - Tabs */}
+        {/* Work */}
         <TabsSection />
       </div>
-    </div>
+    </main>
   );
 }

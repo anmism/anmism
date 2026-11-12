@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const rubik = Rubik({
-  variable: "--font-rubik",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  axes: ["opsz"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -54,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${rubik.variable} h-full antialiased`}
+      className={`${bricolage.variable} h-full antialiased`}
     >
       <head>
         <Script
