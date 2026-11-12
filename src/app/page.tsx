@@ -261,26 +261,7 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-xl font-medium leading-snug tracking-[-0.01em] text-ink">
-            I take ideas from{" "}
-            <span className="relative isolate inline-block whitespace-nowrap">
-              0→1
-              <svg
-                aria-hidden
-                viewBox="0 0 100 20"
-                preserveAspectRatio="none"
-                className="scribble absolute -left-1 bottom-0 -z-10 h-[0.55em] w-[calc(100%+0.5rem)]"
-              >
-                <path
-                  d="M3 13 C 22 7, 45 6, 62 9 S 90 13, 97 7"
-                  pathLength={1}
-                  fill="none"
-                  stroke="var(--sun)"
-                  strokeWidth={9}
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-            .
+            I take ideas from 0→1.
           </p>
           <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
             Cofounder &amp; CTO of a startup with $25k+ in revenue. Based in India, shipping
