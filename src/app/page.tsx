@@ -82,15 +82,7 @@ const projects: Project[] = [
     description: "Scrape and analyze hashtags from social platforms. Available on Chrome Web Store.",
     logo: "/hashtagscraper.png",
     url: "https://chromewebstore.google.com/detail/hashtag-scraper/lkjglfpchhgefmooomhbdipbppabdpii",
-  },
-  {
-    name: "Google Business Scraper",
-    tagline: "Lead Generation Tool",
-    description: "Scrape unlimited business data from Google Maps. Open source and free to use.",
-    logo: "/googlescraper.png",
-    url: "https://github.com/BapunHansdah/google-business-scraper",
-    
-  },
+  }
 ];
 
 const experience: Project[] = [
