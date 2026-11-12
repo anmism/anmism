@@ -1,36 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --paper: #fafafa;
+  --ink: #18181b;
+  --ink-soft: #3f3f46;
+  --muted: #76767f;
+  --line: #e7e7ea;
+  --hover: #f1f1f2;
+  --sun: #f7c325;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-rubik);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-rubik), sans-serif;
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-hover: var(--hover);
+  --color-sun: var(--sun);
+  --font-sans: var(--font-bricolage);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background: var(--sun);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Dot grid that fades out from a corner */
+.dot-grid {
+  position: absolute;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, #c4c4cc 1px, transparent 0);
+  background-size: 20px 20px;
+}
+.dot-grid--tl {
+  top: 0;
+  left: 0;
+  width: min(720px, 90vw);
+  height: 560px;
+  mask-image: radial-gradient(ellipse at top left, #000 0%, transparent 70%);
+}
+.dot-grid--br {
+  bottom: 0;
+  right: 0;
+  width: min(420px, 70vw);
+  height: 320px;
+  mask-image: radial-gradient(ellipse at bottom right, #000 0%, transparent 70%);
+  opacity: 0.7;
+}
+
+/* Hand-drawn highlighter stroke, drawn once on load */
+.scribble path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.4s forwards;
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
