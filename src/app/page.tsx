@@ -54,11 +54,11 @@ const projects: Project[] = [
     url: "https://sketchmark.dev",
   },
   {
-    name: "Twosemi",
-    tagline: "Productivity suite",
-    description: "The only productivity tool you need. Tasks, notes, and workflows in one place.",
-    logo: "/twosemi.png",
-    url: "https://twosemi.anmism.com",
+    name: "QuickCap",
+    tagline: "Capture anything quickly",
+    description: "A lightweight, fast, and privacy-focused app to create notes, recordings, and screenshots.",
+    logo: "/quickcap.png",
+    url: "https://quickcap.anmism.com",
   },
   {
     name: "Cliplocal",
